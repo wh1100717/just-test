@@ -4,12 +4,19 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    banner: {
-      compact: '/*! <%= pkg.name %> <%= pkg.version %> (Custom Build) | <%= pkg.license %> */',
-      full: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n'
-    },
+    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     clean: {
-      files: ['dist']
+      build: ['dist'],
+      release: ['dist/*', '!dist/localdb{.,.min.}js']
+    },
+    requirejs: {
+      compile: {
+        options: {
+          appDir: 'app/',
+          dir: 'dist/',
+          optimize: 'none'
+        }
+      }
     },
     concat: {
       options: {
@@ -17,8 +24,8 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['<%= concat.dist.dest %>'],
-        dest: 'dist/<%= pkg.name %>.js'
+        src: ['dist/**/*.js'],
+        dest: 'dist/localdb.js'
       }
     },
     uglify: {
@@ -27,27 +34,14 @@ module.exports = function(grunt) {
       },
       dist: {
         src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>.min.js'
+        dest: 'dist/localdb.min.js'
       }
     },
-    requirejs: {
-      compile: {
-        options: {
-          name: 'config',
-          mainConfigFile: 'app/config.js',
-          out: '<%= concat.dist.dest %>',
-          optimize: 'none'
-        }
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
       }
     }
   });
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  return grunt.registerTask('default', ['clean', 'requirejs', 'concat', 'uglify']);
+  return grunt.registerTask('default', ['clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']);
 };
