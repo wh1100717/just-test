@@ -1,0 +1,37 @@
+{
+  "name": "LocalDB",
+  "description": "Browser Storage Framework",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "main": "dist/localdb.js",
+  "author": {
+    "name": "Eric Wang",
+    "email": "me@emptystack.net",
+    "url": "http://localdb.emptystack.net/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://mit-license.org"
+    }
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-cli": "*",
+    "load-grunt-tasks": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-concat": "*",
+    "grunt-contrib-connect": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-requirejs": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-karma": "^0.9.0",
+    "karma": "^0.12.24"
+  }
+}
