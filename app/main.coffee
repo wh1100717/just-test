@@ -1,3 +1,3 @@
 define 'localdb', [], ->
     console.log 123
-    return
+    return "hello"

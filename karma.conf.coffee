@@ -15,9 +15,9 @@ module.exports = (config) ->
 
     # list of files / patterns to load in the browser
     files: [
-      'test-main.coffee',
-      {pattern: 'test/**/*Spec.js', included: false}
-    ]
+        {pattern: 'test/**/*Spec.js', included: false},
+        'test-main.js'
+    ],
 
 
     # list of files to exclude
@@ -61,9 +61,14 @@ module.exports = (config) ->
 
     # start these browsers
     # available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'Firefox', 'Safari', 'PhantomJS', 'Opera', 'IE']
+    browsers: ['Chrome']
 
 
     # Continuous Integration mode
     # if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: true
+
+    captureTimeout: 6000
+
+    
+

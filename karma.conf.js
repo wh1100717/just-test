@@ -4,10 +4,10 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['jasmine', 'requirejs'],
     files: [
-      'test-main.coffee', {
+      {
         pattern: 'test/**/*Spec.js',
         included: false
-      }
+      }, 'test-main.js'
     ],
     exclude: [],
     preprocessors: {},
@@ -16,7 +16,8 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome', 'Firefox', 'Safari', 'PhantomJS', 'Opera', 'IE'],
-    singleRun: false
+    browsers: ['Chrome'],
+    singleRun: true,
+    captureTimeout: 6000
   });
 };

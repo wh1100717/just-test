@@ -5,6 +5,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    },
     clean: {
       build: ['dist'],
       release: ['dist/*', '!dist/localdb{.,.min.}js']
@@ -36,12 +41,7 @@ module.exports = function(grunt) {
         src: '<%= concat.dist.dest %>',
         dest: 'dist/localdb.min.js'
       }
-    },
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js'
-      }
     }
   });
-  return grunt.registerTask('default', ['clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']);
+  return grunt.registerTask('default', ['karma', 'clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']);
 };
