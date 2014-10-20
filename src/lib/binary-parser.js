@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define('lib/binary-parser', function(require, exports, module) {
     /**
      * Binary Parser.
      * Jonas Raoni Soares Silva

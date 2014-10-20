@@ -1,4 +1,4 @@
-define (require, exports, module) ->
+define 'lib/collection', (require, exports, module) ->
     'use strict'
 
     Utils = require('lib/utils')

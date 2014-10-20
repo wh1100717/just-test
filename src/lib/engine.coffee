@@ -1,4 +1,4 @@
-define (require, exports, module) ->
+define 'lib/engine', (require, exports, module) ->
     
     'use strict'
 

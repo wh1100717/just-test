@@ -1,4 +1,4 @@
-define (require, exports, module) ->
+define 'lib/bson', (require, exports, module) ->
 
     BinaryParser = require('lib/binary-parser')
 
