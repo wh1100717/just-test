@@ -10,6 +10,7 @@ module.exports = (grunt) ->
         karma: {
             unit: {
                 configFile: 'karma.conf.js'
+                singleRun: true
             }
         }
         clean: {
@@ -19,7 +20,7 @@ module.exports = (grunt) ->
         requirejs: {
             compile: {
                 options: {
-                    appDir: 'app/'
+                    appDir: 'src/'
                     dir: 'dist/'
                     optimize: 'none'
                 }

@@ -1,6 +1,6 @@
 {
-  "name": "localdb",
-  "dependencies": {
-    "requirejs": "~2.1.5"
-  }
+    "name": "localdb",
+    "dependencies": {
+        "requirejs": "~2.1.5"
+    }
 }

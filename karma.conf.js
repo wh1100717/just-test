@@ -5,9 +5,12 @@ module.exports = function(config) {
     frameworks: ['jasmine', 'requirejs'],
     files: [
       {
+        pattern: 'src/**/*.js',
+        included: false
+      }, {
         pattern: 'test/**/*Spec.js',
         included: false
-      }, 'test-main.js'
+      }, 'test/test-main.js'
     ],
     exclude: [],
     preprocessors: {},
@@ -17,7 +20,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     browsers: ['Chrome'],
-    singleRun: true,
+    singleRun: false,
     captureTimeout: 6000
   });
 };

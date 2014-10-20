@@ -7,7 +7,8 @@ module.exports = function(grunt) {
     banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     karma: {
       unit: {
-        configFile: 'karma.conf.js'
+        configFile: 'karma.conf.js',
+        singleRun: true
       }
     },
     clean: {
@@ -17,7 +18,7 @@ module.exports = function(grunt) {
     requirejs: {
       compile: {
         options: {
-          appDir: 'app/',
+          appDir: 'src/',
           dir: 'dist/',
           optimize: 'none'
         }
