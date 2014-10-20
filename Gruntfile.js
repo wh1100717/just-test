@@ -16,6 +16,10 @@ module.exports = function(grunt) {
       release: ['dist/*', '!dist/localdb{.,.min.}js']
     },
     requirejs: {
+
+      /* r.js exmaple build file
+       *  https://github.com/jrburke/r.js/blob/master/build/example.build.js
+       */
       compile: {
         options: {
           appDir: 'src/',
@@ -53,5 +57,7 @@ module.exports = function(grunt) {
       }
     }
   });
-  return grunt.registerTask('default', ['karma', 'coveralls', 'clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']);
+  grunt.registerTask('default', ['karma', 'coveralls']);
+  grunt.registerTask('test', ['default']);
+  return grunt.registerTask('build', ['karma', 'coveralls', 'clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']);
 };

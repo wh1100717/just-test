@@ -18,6 +18,9 @@ module.exports = (grunt) ->
             release: ['dist/*', '!dist/localdb{.,.min.}js']
         }
         requirejs: {
+            ### r.js exmaple build file
+             *  https://github.com/jrburke/r.js/blob/master/build/example.build.js
+            ###
             compile: {
                 options: {
                     appDir: 'src/'
@@ -56,4 +59,9 @@ module.exports = (grunt) ->
         }
     }
 
-    grunt.registerTask 'default', ['karma', 'coveralls', 'clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']
+    grunt.registerTask 'default', ['karma', 'coveralls']
+
+    grunt.registerTask 'test', ['default']
+
+    grunt.registerTask 'build', ['karma', 'coveralls', 'clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']
+
