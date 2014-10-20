@@ -42,7 +42,16 @@ module.exports = function(grunt) {
         src: '<%= concat.dist.dest %>',
         dest: 'dist/localdb.min.js'
       }
+    },
+    coveralls: {
+      options: {
+        debug: true,
+        coverage_dir: 'coverage/',
+        dryRun: true,
+        force: true,
+        recursive: true
+      }
     }
   });
-  return grunt.registerTask('default', ['karma', 'clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']);
+  return grunt.registerTask('default', ['karma', 'coveralls', 'clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']);
 };

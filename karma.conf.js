@@ -13,8 +13,15 @@ module.exports = function(config) {
       }, 'test/test-main.js'
     ],
     exclude: [],
-    preprocessors: {},
-    reporters: ['progress'],
+    preprocessors: {
+      "src/**/*.js": "coverage"
+    },
+    reporters: ['progress', 'coverage'],
+    coverageReporter: {
+      type: "lcov",
+      dir: "coverage/"
+    },
+    plugins: ['karma-jasmine', 'karma-requirejs', 'karma-chrome-launcher', 'karma-coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

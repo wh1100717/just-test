@@ -45,6 +45,15 @@ module.exports = (grunt) ->
                 dest: 'dist/localdb.min.js'
             }
         }
+        coveralls: {
+            options: {
+                debug: true
+                coverage_dir: 'coverage/'
+                dryRun: true
+                force: true
+                recursive: true
+            }
+        }
     }
 
-    grunt.registerTask 'default', ['karma', 'clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']
+    grunt.registerTask 'default', ['karma', 'coveralls', 'clean:build', 'requirejs', 'concat', 'uglify', 'clean:release']
