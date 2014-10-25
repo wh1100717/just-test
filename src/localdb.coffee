@@ -1,4 +1,4 @@
-define 'localdb', (require, exports, module) ->
+define (require, exports, module) ->
     'use strict'
 
     Utils = require('lib/utils')

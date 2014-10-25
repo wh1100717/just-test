@@ -1,4 +1,4 @@
-define 'lib/where', (require, exports, module) ->
+define (require, exports, module) ->
 
     'use strict'
 

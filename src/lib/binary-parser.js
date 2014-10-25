@@ -1,4 +1,4 @@
-define('lib/binary-parser', function(require, exports, module) {
+define(function(require, exports, module) {
     /**
      * Binary Parser.
      * Jonas Raoni Soares Silva
@@ -26,8 +26,6 @@ define('lib/binary-parser', function(require, exports, module) {
         return 1;
     };
 
-
-
     BinaryParser.decodeInt = function decodeInt(data, bits, signed, forceBigEndian) {
         var b = new this.Buffer(this.bigEndian || forceBigEndian, data),
             x = b.readBits(0, bits),
@@ -35,8 +33,6 @@ define('lib/binary-parser', function(require, exports, module) {
 
         return signed && x >= max / 2 ? x - max : x;
     };
-
-
 
     BinaryParser.encodeInt = function encodeInt(data, bits, signed, forceBigEndian) {
         var max = maxBits[bits];

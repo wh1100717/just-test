@@ -1,5 +1,4 @@
-define 'lib/bson', (require, exports, module) ->
-
+define (require, exports, module) ->
     BinaryParser = require('lib/binary-parser')
 
     hexTable = ((if i <= 15 then '0' else '') + i.toString(16) for i in [0...256])

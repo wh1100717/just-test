@@ -1,4 +1,4 @@
-define 'lib/support', (require, exports, module) ->
+define (require, exports, module) ->
 
     'use strict'
 
