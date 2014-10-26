@@ -26,13 +26,13 @@ module.exports = (grunt) ->
         banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>\n' + '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' + '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n'
         karma: {
             unit: {
-                configFile: 'karma.conf.js'
+                configFile: 'karma.conf.coffee'
                 singleRun: true
             }
         }
         clean: {
             build: ['dist']
-            release: ['dist/*', '!dist/localdb{.,.min.}js']
+            # release: ['dist/*', '!dist/localdb{.,.min.}js']
         }
         requirejs: {
             ### r.js exmaple build file
@@ -57,22 +57,12 @@ module.exports = (grunt) ->
                 }
             }
         }
-        concat: {
-            options: {
-                banner: '<%= banner %>'
-                stripBanners: true
-            }
-            dist: {
-                src: ['dist/**/*.js']
-                dest: 'dist/localdb.js'
-            }
-        }
         uglify: {
             options: {
                 banner: '<%= banner %>'
             }
             dist: {
-                src: '<%= concat.dist.dest %>'
+                src: 'dist/localdb.js'
                 dest: 'dist/localdb.min.js'
             }
         }
@@ -87,12 +77,11 @@ module.exports = (grunt) ->
         }
     }
 
-    grunt.registerTask 'build', ['clean:build', 'requirejs']
-
     grunt.registerTask 'test', ['karma', 'coveralls']
 
+    grunt.registerTask 'build', ['test', 'clean:build', 'requirejs', 'uglify']
 
-    grunt.registerTask 'default', ['test', 'build', 'concat', 'uglify', 'clean:release']
+    grunt.registerTask 'default', ['test']
 
     return
 
