@@ -73,7 +73,7 @@ module.exports = function(grunt) {
       options: {
         debug: true,
         coverage_dir: 'coverage/',
-        dryRun: true,
+        dryRun: process.env.TRAVIS != null ? false : true,
         force: true,
         recursive: true
       }
