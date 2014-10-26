@@ -58,12 +58,25 @@ module.exports = (grunt) ->
             }
         }
         uglify: {
-            options: {
-                banner: '<%= banner %>'
-            }
-            dist: {
-                src: 'dist/localdb.js'
-                dest: 'dist/localdb.min.js'
+            all: {
+                files: {
+                    "dist/localdb.min.js": ["dist/localdb.js"]
+                }
+                options: {
+                    banner: '<%= banner %>'
+                    preserveComments: false
+                    sourceMap: true
+                    sourceMapName: "dist/localdb.min.map"
+                    report: "min"
+                    beautify: {
+                        "ascii_only": true
+                    }
+                    compress: {
+                        "hoist_funs": false
+                        loops: false
+                        unused: false
+                    }
+                }
             }
         }
         coveralls: {

@@ -1,5 +1,3 @@
-/*! LocalDB - v0.0.1 - 2014-10-25
-* Copyright (c) 2014 Eric Wang; Licensed MIT */
 (function( global, factory ) {
 
     if ( typeof module === "object" && typeof module.exports === "object" ) {
