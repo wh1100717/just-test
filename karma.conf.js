@@ -21,12 +21,12 @@ module.exports = function(config) {
       type: "lcov",
       dir: "coverage/"
     },
-    plugins: ['karma-jasmine', 'karma-requirejs', 'karma-chrome-launcher', 'karma-coverage'],
+    plugins: ['karma-jasmine', 'karma-requirejs', 'karma-chrome-launcher', 'karma-phantomjs-launcher', 'karma-firefox-launcher', 'karma-ie-launcher', 'karma-coverage'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: false,
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'PhantomJS', 'Firefox', 'ie'],
     singleRun: false,
     captureTimeout: 6000
   });

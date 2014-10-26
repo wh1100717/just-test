@@ -47,6 +47,9 @@ module.exports = (config) ->
             'karma-jasmine'
             'karma-requirejs'
             'karma-chrome-launcher'
+            'karma-phantomjs-launcher'
+            'karma-firefox-launcher'
+            'karma-ie-launcher'
             'karma-coverage'
         ]
 
@@ -74,7 +77,7 @@ module.exports = (config) ->
 
         # start these browsers
         # available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome']
+        browsers: ['Chrome','PhantomJS','Firefox','ie']
 
 
         # Continuous Integration mode
